@@ -1,7 +1,8 @@
 %OPTPARSE Standard option parser for Toolbox functions
 
 % This function was adapted from Peter Corke's Robotics Toolbox (rvctools),
-% but is covered under the GNU General Public License.
+% and is covered under the Lesser GNU General Public License.
+% The full toolbox is available for free download from the author at:
 % http://www.petercorke.com/Home.html
 %
 % [OPTOUT,ARGS] = TB_OPTPARSE(OPT, ARGLIST) is a generalized option parser for
