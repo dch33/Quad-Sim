@@ -2,6 +2,21 @@ README:
 	NOTE: THIS IS AN EARLY RELEASE INTENDED FOR BASIC DEMONSTRATION PURPOSES.
 	THIS RELEASE IS NOT INTENDED TO REPRESENT THE FULL FUNCTIONALITY OF THE FINAL PROJECT.
 	PLEASE USE FOR ENTERTAINMENT AND CONCEPTUAL EXPLORATION ONLY.
+	
+	Copyright (C) 2014 D. Hartman, K. Landis, S. Moreno, J. Kim, M. Mehrer
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+ 
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+ 
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/
 
 Instructions for this Simulation Package:
 
@@ -11,7 +26,7 @@ Open one of:
 	1) 	Simulink Model with both Position/Attitude Control (quad_simulink_wPosition.slx)
 	2)	Simulink Model with Attitude Control only (quad_simulink_attitudeOnly.slx)
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 NOTE:
 
 If (1), Position/Attitude Control, you will first need to load a simulation path into the MATLAB workspace.
@@ -20,7 +35,7 @@ If (1), Position/Attitude Control, you will first need to load a simulation path
 
 If (2), Attitude Control only, you will not need to load the Simulation Path .m file. Proceed to "START" below.
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 START
 
 First, load the desired Quadcopter Model:
@@ -46,7 +61,7 @@ To view the results of the simulation in an animation:
 	iii)	Before starting the animation, change the "Frame Skips" value to adjust the size of steps to take for plotting the animation ("0" plots every frame, "1" plots every other frame, etc.)
 	iv)	Select the "Start" button to begin the animation. Adjust the viewing angle by dragging the sliders, or selecting the viewing angle buttons along the right side of the screen
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 
 Acknowledgement:
 The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), and are covered under the Lesser GNU General Public License.
