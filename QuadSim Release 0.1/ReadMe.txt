@@ -45,3 +45,10 @@ To view the results of the simulation in an animation:
 	ii) 	The Animation GUI will open, which will display side-by-side views of the quadcopter attitude, along with the position of the vehicle
 	iii)	Before starting the animation, change the "Frame Skips" value to adjust the size of steps to take for plotting the animation ("0" plots every frame, "1" plots every other frame, etc.)
 	iv)	Select the "Start" button to begin the animation. Adjust the viewing angle by dragging the sliders, or selecting the viewing angle buttons along the right side of the screen
+
+Acknowledgements:
+The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), but are covered under the GMU General Public License.
+	- circle.m
+	- tb_optparse.m
+	
+http://www.petercorke.com/Home.html
