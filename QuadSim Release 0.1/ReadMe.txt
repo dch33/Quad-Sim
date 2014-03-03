@@ -47,7 +47,7 @@ To view the results of the simulation in an animation:
 	iv)	Select the "Start" button to begin the animation. Adjust the viewing angle by dragging the sliders, or selecting the viewing angle buttons along the right side of the screen
 
 Acknowledgements:
-The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), but are covered under the GMU General Public License.
+The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), but are covered under the GNU General Public License.
 	- circle.m
 	- tb_optparse.m
 	
