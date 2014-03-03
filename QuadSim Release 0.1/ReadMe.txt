@@ -1,5 +1,5 @@
 README:
-	NOTE: THIS IS AN EARLY RELEASE INTEDED FOR BASIC DEMONSTRATION PURPOSES.
+	NOTE: THIS IS AN EARLY RELEASE INTENDED FOR BASIC DEMONSTRATION PURPOSES.
 	THIS RELEASE IS NOT INTENDED TO REPRESENT THE FULL FUNCTIONALITY OF THE FINAL PROJECT.
 	PLEASE USE FOR ENTERTAINMENT AND CONCEPTUAL EXPLORATION ONLY.
 
@@ -46,9 +46,11 @@ To view the results of the simulation in an animation:
 	iii)	Before starting the animation, change the "Frame Skips" value to adjust the size of steps to take for plotting the animation ("0" plots every frame, "1" plots every other frame, etc.)
 	iv)	Select the "Start" button to begin the animation. Adjust the viewing angle by dragging the sliders, or selecting the viewing angle buttons along the right side of the screen
 
-Acknowledgements:
-The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), but are covered under the GNU General Public License.
-	- circle.m
-	- tb_optparse.m
-	
-http://www.petercorke.com/Home.html
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Acknowledgement:
+The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), and are covered under the Lesser GNU General Public License.
+	- circle.m (adapted into the QuadAnim.m GUI program to draw circles)
+	- tb_optparse.m (helper function for circle.m)
+	The full toolbox is available for free download from the author at:
+	http://www.petercorke.com/Home.html
