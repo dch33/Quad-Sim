@@ -30,7 +30,8 @@ Open one of:
 NOTE:
 
 If (1), Position/Attitude Control, you will first need to load a simulation path into the MATLAB workspace.
-	i) 	From MATLAB's main window, locate the "SimulationXYPath.m" file in the working directory, and run the .m file
+	i) 	From MATLAB's main window, locate the "SimulationXYPath.m" file in the working directory, 
+		and run the .m file
 	ii) 	Proceed to "START" below.
 
 If (2), Attitude Control only, you will not need to load the Simulation Path .m file. Proceed to "START" below.
@@ -64,8 +65,11 @@ To view the results of the simulation in an animation:
 ------------------------------------------------------------------------------------------------------------------------------
 
 Acknowledgement:
-The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), and are covered under the Lesser GNU General Public License.
+The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), 
+and are covered under the Lesser GNU General Public License.
+
 	- circle.m (adapted into the QuadAnim.m GUI program to draw circles)
 	- tb_optparse.m (helper function for circle.m)
+	
 	The full toolbox is available for free download from the author at:
 	http://www.petercorke.com/Home.html
