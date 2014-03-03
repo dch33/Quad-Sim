@@ -40,10 +40,12 @@ function varargout = QuadAnim(varargin)
 % along with this program.  If not, see <http://www.gnu.org/licenses/
 
 % The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools),
-% but are covered under the GNU General Public License.
-%	- circle.m
-% 	- tb_optparse.m
-% http://www.petercorke.com/Home.html
+% and are covered under the Lesser GNU General Public License.
+%	- circle.m (adapted into the GUI program below)
+% 	- tb_optparse.m (helper function for circle.m)
+%
+%	The full toolbox is available for free download from the author at:
+% 	http://www.petercorke.com/Home.html
 
 
 % Begin initialization code - DO NOT EDIT
