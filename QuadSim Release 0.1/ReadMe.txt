@@ -1,10 +1,8 @@
-ReadMe
-
-The following files... needed to run the sim, included in this package....HELP
+README
 
 Instructions for this Simulation Package:
 
-NOTE: MAKE SURE THE ("RELEASE FOLDER NAME") FOLDER IS ADDED TO THE MATLAB PATH BEFORE STARTING.
+NOTE: MAKE SURE THE ("QuadSim Release 0.1") FOLDER IS ADDED TO THE MATLAB PATH BEFORE STARTING.
 
 Open one of:
 	1) 	Simulink Model with both Position/Attitude Control (quad_simulink_wPosition.slx)
