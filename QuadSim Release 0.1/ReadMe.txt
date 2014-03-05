@@ -1,4 +1,9 @@
 README:
+
+	To use, first download all files to your computer using the "Download ZIP" button on the right of the main 
+	"Quad-Sim" folder screen. Open the folder folder containing these files from your computer and follow the 
+	instructions in this README.
+
 	NOTE: THIS IS AN EARLY RELEASE INTENDED FOR BASIC DEMONSTRATION PURPOSES.
 	THIS RELEASE IS NOT INTENDED TO REPRESENT THE FULL FUNCTIONALITY OF THE FINAL PROJECT.
 	PLEASE USE FOR ENTERTAINMENT AND CONCEPTUAL EXPLORATION ONLY.
@@ -19,6 +24,9 @@ README:
 	along with this program.  If not, see <http://www.gnu.org/licenses/
 
 Instructions for this Simulation Package:
+
+Software Requirements: These programs were created using MATLAB/Simulink 2013a. While they may run under other versions
+of the MATLAB environment, performance may be unreliable.
 
 NOTE: MAKE SURE THE ("QuadSim Release 0.1") FOLDER IS ADDED TO THE MATLAB PATH BEFORE STARTING.
 
@@ -62,6 +70,21 @@ To view the results of the simulation in an animation:
 	iii)	Before starting the animation, change the "Frame Skips" value to adjust the size of steps to take for plotting the animation ("0" plots every frame, "1" plots every other frame, etc.)
 	iv)	Select the "Start" button to begin the animation. Adjust the viewing angle by dragging the sliders, or selecting the viewing angle buttons along the right side of the screen
 
+To have fun:
+	i) Double click on some of the system blocks on the main screen, most of these represent subsystems you can check out.
+	ii) (attitude control only model) Set up and save some initial conditions using the IC GUI. Try introducing some error to Phi, Theta, or Psi.
+	Can the control system level the vehicle?
+	iii) (attitude control only model) What happens when you change the gains on the attitude controllers?
+	Can you improve the performance of the vehicle?
+	iv) (position control model) Open the SimulationXY path file and change the path to be something unique.
+	Can you get it to fly a circular trajectory?
+	
+Remember, this is simply a simulation demo. The main goal of the overall project is to connect experimentally
+derived parameters to the simulation in order to have a simulated version of the real quadcopter available for control
+design. Future releases will include all the information (hardware designs, circuit designs, documentation etc.) 
+needed to take full advantage of this functionality. Expect these updates to be available early May of 2014.
+	
+	
 ------------------------------------------------------------------------------------------------------------------------------
 
 Acknowledgement:
