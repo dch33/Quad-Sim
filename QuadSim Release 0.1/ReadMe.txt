@@ -34,7 +34,7 @@ Open one of:
 	1) 	Simulink Model with both Position/Attitude Control (quad_simulink_wPosition.slx)
 	2)	Simulink Model with Attitude Control only (quad_simulink_attitudeOnly.slx)
 
-------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 NOTE:
 
 If (1), Position/Attitude Control, you will first need to load a simulation path into the MATLAB workspace.
@@ -44,7 +44,7 @@ If (1), Position/Attitude Control, you will first need to load a simulation path
 
 If (2), Attitude Control only, you will not need to load the Simulation Path .m file. Proceed to "START" below.
 
-------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 START
 
 First, load the desired Quadcopter Model:
@@ -85,7 +85,7 @@ design. Future releases will include all the information (hardware designs, circ
 needed to take full advantage of this functionality. Expect these updates to be available early May of 2014.
 	
 	
-------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 
 Acknowledgement:
 The following functions were adapted from Peter Corke's Robotics Toolbox (rvctools), 
