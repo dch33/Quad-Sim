@@ -4,9 +4,13 @@ Provided here is an assortment of materials designed to assist users in modeling
 Specifically:
 
 •Test rig designs for component performance measurement
+
 •Several MATLAB data analysis tools and GUIs (R2013a Tested)
+
 •A configurable Simulink quadcopter simulation
+
 •And a bit more stuff…
+
 
 The full package should be available for download at: github.com/dch33/Quad-Sim
 These materials are partially the result of a Senior Design project at Drexel University. The team consisted of:
