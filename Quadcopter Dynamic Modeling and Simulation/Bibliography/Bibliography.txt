@@ -1,0 +1,18 @@
+The following list represents some of the more substantial influences to our project. This list may be updated,
+and additional information may be added as it becomes available.
+
+
+R. Mahony, V. Kumar, and P. Corke, “Multirotor Aerial Vehicles: Modeling, Estimation, and Control of a Quadrotor,” in IEEE Robotics and Automation Magazine, vol. 19, Sept. 2012, pp. 20-32
+P. I. Corke, Robotics, Vision & Control: Fundamental Algorithms in MATLAB. Berlin: Springer-Verlag, 2011.
+K. T. Ulrich, and S. D. Eppinger, Product Design and Development. New York: McGraw-Hill/Irwin, 2012. Print.
+"Rapid Application Development." Wikipedia. Wikimedia Foundation, 12 Jan. 2013. Web. 01 Dec. 2013.
+L. K. Burkamshaw, “Towards a low-cost quadrotor research platform.” Naval Postgraduate School, Monterey, California. March 2010.
+B. L. Stevens and F. L. Lewis, Aircraft Control and Simulation. Hoboken, NJ: John Wiley & Sons, Inc, 2003.
+L. Ascorti, “An Application of the Extended Kalman Filter to the Attitude Control of A Quadrotor”, Politecnico Di Milano, 2013
+Rick. "Designing a Thrust Test Bench." Web log post. Confessions of a Quadcopter Addict. Blogspot, 04 Apr. 2013. Web. 1 Dec. 2013. 
+<http://confessionsofaquadcopteraddict.blogspot.com/2013/04/designing-thrust-test-bench.html>. 
+P.E. Pounds, "Design, Construction and Control of a Large Quadrotor Micro Air Vehicle," The Australian National University, Sept. 2007. 
+MathWorks. Simulink: Simulation and Model-Based Design. Web. 14 Mar 2014. < http://www.mathworks.com/products/simulink/>. 
+C. Jagadish and B. C. Chang, “Fault-tolerant attitude computation for unmanned aerial vehicles,” Transactions of the Institute of Measurement and Control
+C. Moore, “First Order Digital Filters—An Audio Cookbook”, Application note AN-11, 2001. http://www.world.std.com/~cmoore/
+T. Fisher, Online discrete filter coefficient calculator, <http://www.users.cs.york.ac.uk/~fisher/mkfilter/trad.html>
