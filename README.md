@@ -1,5 +1,7 @@
 Quadcopter Dynamic Modeling and Simulation (Quad-Sim) v1.00
 =======
+TO DOWNLOAD: Click "Download Zip" on the right to download all of our materials as a single file.
+
 Provided here is an assortment of materials designed to assist users in modeling and simulation a quadcopter.
 Specifically:
 
