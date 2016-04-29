@@ -270,6 +270,10 @@ maxX = max(A(:,10))*3.28;
 maxY = max(A(:,11))*3.28;
 maxZ = max(A(:,12))*3.28;
 
+maxV = max([maxX, maxY, maxZ]);
+maxX = maxV;
+maxY = maxV;
+maxZ = maxV;
 % Plot the three dimensional trajectory of the box
 axes(handles.axes2)
 X = A(1:1,10)*3.28; Y = A(1:1,11)*3.28; Z = A(1:1,12)*3.28;
@@ -446,6 +450,20 @@ if strcmp(mode,'Start')
     frameSkipVal = str2double(get(handles.frameSkips,'String'))+1; % Size of steps to take for plotting animation (1 plots 
     % every frame, 2 about every other, etc.
     
+    mario_fv = stlread('boxman.stl');
+    scaling = 1/1000*eye(3);
+    theta = deg2rad(-90);
+    rotateZ = [cos(theta) -sin(theta) 0;
+              sin(theta) cos(theta) 0;
+              0 0 1];
+    rotateY = [cos(theta) 0 sin(theta);
+               0 1 0;
+               -sin(theta) 0 cos(theta)];
+    rotateX = [1 0 0;
+               0 cos(theta) -sin(theta);
+               0 sin(theta) cos(theta)];
+
+    mario_fv.vertices = mario_fv.vertices*scaling*rotateX*rotateZ;
 
     r = .5; d = 1.25; h = .25; %inches: rotor dia., quad motor distance from 
     % cm, and rotor height above arms (entirely cosmetic)
@@ -554,6 +572,11 @@ if strcmp(mode,'Start')
     maxX = max(A(:,10))*3.28;
     maxY = max(A(:,11))*3.28;
     maxZ = max(A(:,12))*3.28;
+    
+    maxV = max([maxX, maxY, maxZ]);
+    maxX = maxV;
+    maxY = maxV;
+    maxZ = maxV;
     colors = jet(length(A(:,10))); % color the path for time info
     
     % Precompute R
@@ -568,7 +591,7 @@ if strcmp(mode,'Start')
 %     if (skipFlag == 1)
 %         jSkip = 1:frameSkipVal:j;
 %     end
-    while ( strcmp(get(hObject,'String'),'Stop'))
+    while ( strcmp(get(hObject,'String'),'Stop') )
         handles = guidata(gcbo);
         j = handles.j;
         
@@ -654,6 +677,10 @@ if strcmp(mode,'Start')
         axes(handles.axes2)
         hold on
         scatter3(X,Y,Z,36,colors(j,:));
+        patch(mario_fv,'FaceColor',       [0.8 0.8 1.0], ...
+         'EdgeColor',       'none',        ...
+         'FaceLighting',    'gouraud',     ...
+         'AmbientStrength', 0.15);
         if (j == 1 || handles.skipFlag==1)
             fill3([minX-1 maxX+1 maxX+1 minX-1],...
                   [minY-1 minY-1 maxY+1 maxY+1],...
