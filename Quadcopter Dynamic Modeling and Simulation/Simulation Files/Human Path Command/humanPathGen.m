@@ -1,9 +1,9 @@
 %make human's path
-t = 0:0.1:30;
-x = t/5;
-y = cos(5*x)+3;
+t = 0:0.5:30;
+x = t/3;
+y = .5*cos(3*x)+4;
 z = zeros(1,size(t,2));
-slope = -5*sin(5*x);
+slope = .5*-3*sin(3*x);
 psi = atan(slope);
 
 %test plot to make sure direction and positioning are correct

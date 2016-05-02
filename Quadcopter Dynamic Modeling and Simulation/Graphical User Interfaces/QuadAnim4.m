@@ -449,21 +449,28 @@ if strcmp(mode,'Start')
     tout = evalin('base', 'tout');
     frameSkipVal = str2double(get(handles.frameSkips,'String'))+1; % Size of steps to take for plotting animation (1 plots 
     % every frame, 2 about every other, etc.
+    human_x = A(:,27);
+    human_y = A(:,28);
+    human_z = A(:,29);
+    human_psi = A(:,30);
     
-    mario_fv = stlread('boxman.stl');
+    baseHuman = stlread('boxman.stl');
+    human = baseHuman;
+    
+    %magic numbers relating to human model's position and orientation
     scaling = 1/1000*eye(3);
     theta = deg2rad(-90);
-    rotateZ = [cos(theta) -sin(theta) 0;
-              sin(theta) cos(theta) 0;
+    rotateZ = [cos(-theta) -sin(-theta) 0;
+              sin(-theta) cos(-theta) 0;
               0 0 1];
-    rotateY = [cos(theta) 0 sin(theta);
-               0 1 0;
-               -sin(theta) 0 cos(theta)];
     rotateX = [1 0 0;
                0 cos(theta) -sin(theta);
                0 sin(theta) cos(theta)];
-
-    mario_fv.vertices = mario_fv.vertices*scaling*rotateX*rotateZ;
+    baseHuman.vertices = baseHuman.vertices*scaling*rotateX*rotateZ;
+    
+    baseHuman.vertices(:,1) = baseHuman.vertices(:,1) + .5;
+    baseHuman.vertices(:,2) = baseHuman.vertices(:,2) + .8;
+    
 
     r = .5; d = 1.25; h = .25; %inches: rotor dia., quad motor distance from 
     % cm, and rotor height above arms (entirely cosmetic)
@@ -677,7 +684,18 @@ if strcmp(mode,'Start')
         axes(handles.axes2)
         hold on
         scatter3(X,Y,Z,36,colors(j,:));
-        patch(mario_fv,'FaceColor',       [0.8 0.8 1.0], ...
+        
+        rotateY = [cos(human_psi(j)) sin(human_psi(j)) 0;
+               -sin(human_psi(j)) cos(human_psi(j)) 0; 
+               0 0 1];
+        human.vertices = baseHuman.vertices*rotateY;
+        human.vertices(:,1) = human.vertices(:,1) + human_x(j);
+        human.vertices(:,2) = human.vertices(:,2) + human_y(j);
+        human.vertices(:,3) = human.vertices(:,3) + human_z(j);
+        if exist('hu', 'var')
+            delete(hu)
+        end
+        hu = patch(human,'FaceColor',       [0.8 0.8 1.0], ...
          'EdgeColor',       'none',        ...
          'FaceLighting',    'gouraud',     ...
          'AmbientStrength', 0.15);
