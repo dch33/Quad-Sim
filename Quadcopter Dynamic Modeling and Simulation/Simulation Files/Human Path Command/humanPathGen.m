@@ -1,5 +1,5 @@
 %make human's path
-t = 0:0.5:30;
+t = 0:0.5:50;
 x = t/3;
 y = .5*cos(3*x)+4;
 z = zeros(1,size(t,2));
