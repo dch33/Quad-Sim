@@ -454,9 +454,20 @@ if strcmp(mode,'Start')
     human_z = A(:,29);
     human_psi = A(:,30);
     
+    %% camera system input 
+    cam_r = A(:,31);
+    cam_theta = A(:,32);
+    cam_psi = A(:,33);
+    
+    % transform cam into cartesian coordinates
+    cam_x = cam_r.*sin(cam_psi).*cos(cam_theta);
+    cam_y = cam_r.*sin(cam_psi).*sin(cam_theta);
+    cam_z = cam_r.*cos(cam_psi);
+    
     baseHuman = stlread('boxman.stl');
     human = baseHuman;
     
+    %% human model
     %magic numbers relating to human model's position and orientation
     scaling = 1/1000*eye(3);
     theta = deg2rad(-90);
@@ -604,6 +615,7 @@ if strcmp(mode,'Start')
         
         guidata(hObject,handles); % Update handles data
         Vi(j,:) = R{j,1}*Vb(:,j);
+%         camDirection(j,:) = R{j,1}*
 
         NrR = R{j,1}*Nr;
         ErR = R{j,1}*Er;
@@ -658,8 +670,23 @@ if strcmp(mode,'Start')
 %         M = sqrt(P^2+Q^2+Rw^2);
 %         omb = 3/M*[P,Q,Rw].';%/M; % Scaling of angular velocity vector
         omi(j,:) = R{j,1}*omb(:,j);
+        
+        %% arrows on attitude plot
         qp1 = quiver3(0,0,0,omi(j,1),omi(j,2),omi(j,3),'r');
         qp2 = quiver3(0,0,0,Vi(j,1),Vi(j,2),Vi(j,3),'k');
+        
+        %plot human ground truth as an arrow on attitude plot
+        human_gt = [human_x(j)-A(j,10)*3.28; human_y(j)-A(j,11)*3.28; human_z(j)-A(j,12)*3.28];
+        human_gt = 2.5.*human_gt./norm(human_gt);
+        qp3 = quiver3(0,0,0,human_gt(1),human_gt(2),human_gt(3),'b','LineWidth',2);
+        
+        %measurements that the camera is reporting
+        cam = [cam_x(j); cam_y(j); cam_z(j)];
+        human_cam = R{j,1}*cam;
+        human_cam = -2.5.*human_cam./norm(human_cam);
+        qp4 = quiver3(0,0,0,human_cam(1), human_cam(2), human_cam(3),'k','LineWidth',2);
+        
+        %% plot params
         axis square
         grid on
         hold off
