@@ -464,7 +464,7 @@ if strcmp(mode,'Start')
     cam_y = cam_r.*sin(cam_psi).*sin(cam_theta);
     cam_z = cam_r.*cos(cam_psi);
     
-    baseHuman = stlread('boxman.stl');
+    baseHuman = stlread('./STLread/STLread/boxman.stl');
     human = baseHuman;
     
     %% human model
