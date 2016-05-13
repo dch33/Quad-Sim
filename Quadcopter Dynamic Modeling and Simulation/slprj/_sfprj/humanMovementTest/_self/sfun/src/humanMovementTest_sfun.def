@@ -1,0 +1,3 @@
+LIBRARY humanMovementTest_sfun.mexw64
+EXPORTS
+mexFunction

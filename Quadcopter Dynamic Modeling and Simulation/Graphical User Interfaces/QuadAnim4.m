@@ -270,6 +270,10 @@ maxX = max(A(:,10))*3.28;
 maxY = max(A(:,11))*3.28;
 maxZ = max(A(:,12))*3.28;
 
+maxV = max([maxX, maxY, maxZ]);
+maxX = maxV;
+maxY = maxV;
+maxZ = maxV;
 % Plot the three dimensional trajectory of the box
 axes(handles.axes2)
 X = A(1:1,10)*3.28; Y = A(1:1,11)*3.28; Z = A(1:1,12)*3.28;
@@ -445,6 +449,38 @@ if strcmp(mode,'Start')
     tout = evalin('base', 'tout');
     frameSkipVal = str2double(get(handles.frameSkips,'String'))+1; % Size of steps to take for plotting animation (1 plots 
     % every frame, 2 about every other, etc.
+    human_x = A(:,27);
+    human_y = A(:,28);
+    human_z = A(:,29);
+    human_psi = A(:,30);
+    
+    %% camera system input 
+    cam_r = A(:,31);
+    cam_theta = A(:,32);
+    cam_psi = A(:,33);
+    
+    % transform cam into cartesian coordinates
+    cam_x = cam_r.*sin(cam_psi).*cos(cam_theta);
+    cam_y = cam_r.*sin(cam_psi).*sin(cam_theta);
+    cam_z = cam_r.*cos(cam_psi);
+    
+    baseHuman = stlread('./STLread/STLread/boxman.stl');
+    human = baseHuman;
+    
+    %% human model
+    %magic numbers relating to human model's position and orientation
+    scaling = 1/1000*eye(3);
+    theta = deg2rad(-90);
+    rotateZ = [cos(-theta) -sin(-theta) 0;
+              sin(-theta) cos(-theta) 0;
+              0 0 1];
+    rotateX = [1 0 0;
+               0 cos(theta) -sin(theta);
+               0 sin(theta) cos(theta)];
+    baseHuman.vertices = baseHuman.vertices*scaling*rotateX*rotateZ;
+    
+    baseHuman.vertices(:,1) = baseHuman.vertices(:,1) + .5;
+    baseHuman.vertices(:,2) = baseHuman.vertices(:,2) + .8;
     
 
     r = .5; d = 1.25; h = .25; %inches: rotor dia., quad motor distance from 
@@ -554,6 +590,11 @@ if strcmp(mode,'Start')
     maxX = max(A(:,10))*3.28;
     maxY = max(A(:,11))*3.28;
     maxZ = max(A(:,12))*3.28;
+    
+    maxV = max([maxX, maxY, maxZ]);
+    maxX = maxV;
+    maxY = maxV;
+    maxZ = maxV;
     colors = jet(length(A(:,10))); % color the path for time info
     
     % Precompute R
@@ -568,12 +609,13 @@ if strcmp(mode,'Start')
 %     if (skipFlag == 1)
 %         jSkip = 1:frameSkipVal:j;
 %     end
-    while ( strcmp(get(hObject,'String'),'Stop'))
+    while ( strcmp(get(hObject,'String'),'Stop') )
         handles = guidata(gcbo);
         j = handles.j;
         
         guidata(hObject,handles); % Update handles data
         Vi(j,:) = R{j,1}*Vb(:,j);
+%         camDirection(j,:) = R{j,1}*
 
         NrR = R{j,1}*Nr;
         ErR = R{j,1}*Er;
@@ -628,8 +670,23 @@ if strcmp(mode,'Start')
 %         M = sqrt(P^2+Q^2+Rw^2);
 %         omb = 3/M*[P,Q,Rw].';%/M; % Scaling of angular velocity vector
         omi(j,:) = R{j,1}*omb(:,j);
+        
+        %% arrows on attitude plot
         qp1 = quiver3(0,0,0,omi(j,1),omi(j,2),omi(j,3),'r');
         qp2 = quiver3(0,0,0,Vi(j,1),Vi(j,2),Vi(j,3),'k');
+        
+        %plot human ground truth as an arrow on attitude plot
+        human_gt = [human_x(j)-A(j,10)*3.28; human_y(j)-A(j,11)*3.28; human_z(j)-A(j,12)*3.28];
+        human_gt = 2.5.*human_gt./norm(human_gt);
+        qp3 = quiver3(0,0,0,human_gt(1),human_gt(2),human_gt(3),'b','LineWidth',2);
+        
+        %measurements that the camera is reporting
+        cam = [cam_x(j); cam_y(j); cam_z(j)];
+        human_cam = R{j,1}*cam;
+        human_cam = -2.5.*human_cam./norm(human_cam);
+        qp4 = quiver3(0,0,0,human_cam(1), human_cam(2), human_cam(3),'k','LineWidth',2);
+        
+        %% plot params
         axis square
         grid on
         hold off
@@ -654,6 +711,21 @@ if strcmp(mode,'Start')
         axes(handles.axes2)
         hold on
         scatter3(X,Y,Z,36,colors(j,:));
+        
+        rotateY = [cos(human_psi(j)) sin(human_psi(j)) 0;
+               -sin(human_psi(j)) cos(human_psi(j)) 0; 
+               0 0 1];
+        human.vertices = baseHuman.vertices*rotateY;
+        human.vertices(:,1) = human.vertices(:,1) + human_x(j);
+        human.vertices(:,2) = human.vertices(:,2) + human_y(j);
+        human.vertices(:,3) = human.vertices(:,3) + human_z(j);
+        if exist('hu', 'var')
+            delete(hu)
+        end
+        hu = patch(human,'FaceColor',       [0.8 0.8 1.0], ...
+         'EdgeColor',       'none',        ...
+         'FaceLighting',    'gouraud',     ...
+         'AmbientStrength', 0.15);
         if (j == 1 || handles.skipFlag==1)
             fill3([minX-1 maxX+1 maxX+1 minX-1],...
                   [minY-1 minY-1 maxY+1 maxY+1],...
